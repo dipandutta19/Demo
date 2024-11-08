@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Realistic Clouds</title>
+    <style>
+        /* Background - Default (for desktop or larger screens) */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('sky.jpg');
+            /* Default image for larger screens */
+            background-size: contain;
+            background-position: center;
+            overflow: hidden;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 3s ease-in-out forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        /* Background image for phones (mobile devices) */
+        @media (max-width: 768px) {
+            body {
+                background-image: url('sky2.jpg');
+                /* New background image for phones */
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        /* Background Fade-In */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* Sun Rays - Replace with Sun Image */
+        .sun-rays {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 50%;
+            background-image: url('sun-image.png');
+            /* Replace with your sun image */
+            background-size: cover;
+            background-position: center;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: rotateRays 20s linear infinite;
+        }
+
+        @keyframes rotateRays {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Cloud Styling with Image */
+        .cloud {
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            opacity: 0.9;
+            animation: floatClouds 20s linear infinite;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Cloud Image URLs (Replace with your own cloud images) */
+        .cloud1 {
+            width: 180px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            background-image: url('41-removebg-preview.png');
+        }
+
+        .cloud2 {
+            width: 220px;
+            height: 120px;
+            top: 35%;
+            left: 60%;
+            animation-delay: 4s;
+            background-image: url('41-removebg-preview.png');
+        }
+
+        .cloud3 {
+            width: 190px;
+            height: 110px;
+            top: 50%;
+            left: 30%;
+            animation-delay: 2s;
+            background-image: url('41-removebg-preview.png');
+        }
+
+        .cloud4 {
+            width: 210px;
+            height: 120px;
+            top: 65%;
+            left: 75%;
+            animation-delay: 6s;
+            background-image: url('41-removebg-preview.png');
+        }
+
+        @keyframes floatClouds {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Message Container with Glowing Effects */
+        /* Message Container with Glowing Effects */
+        .message-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            background-color: white;
+            /* Changed background to white */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+            animation: glowBorder 2s infinite alternate;
+        }
+
+
+
+
+        /* Border Animation */
+        @keyframes glowBorder {
+            0% {
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 20px #ff5f5f, inset 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 35px #ff5f5f, inset 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Glowing Text */
+        .message {
+            font-size: 26px;
+            font-weight: bold;
+            color: #333;
+            /* Dark color for text */
+            text-shadow: none;
+            /* Removed the glow effect for better contrast on white background */
+            animation: textGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Text Glow Animation */
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px #ff5f5f;
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px #ff5f5f, 0 0 30px #ff5f5f;
+            }
+        }
+
+        /* Read More Button */
+        .read-more-btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #ff8a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background-color: #ff5f5f;
+        }
+
+        /* Read More Content */
+        .extra-content {
+            display: none;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+            max-width: 300px;
+            animation: slideDown 1s forwards;
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Link Styling for Call Me and WhatsApp */
+        .contact-link {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #ff5f5f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-link:hover {
+            background-color: #ff8a8a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sun Rays for a dreamy effect -->
+    <div class="sun-rays"></div>
+
+    <!-- Floating Beautiful Clouds with different texts -->
+    <div class="cloud cloud1" onclick="showMessage('I love you Aloo!')">Hit me </div>
+    <div class="cloud cloud2" onclick="showMessage('You are my sunshine!')">Hit me </div>
+    <div class="cloud cloud3" onclick="showMessage('You make me smile!')">Hit me </div>
+    <div class="cloud cloud4" onclick="showMessage('You are my world!')">Hit me </div>
+
+    <!-- Message Container with Glowing Text and Read More -->
+    <div class="message-container" id="messageContainer">
+        <div class="message" id="messageText"></div>
+        <button class="read-more-btn" onclick="toggleReadMore()">Read More</button>
+        <div class="extra-content" id="extraContent">
+            <span id="extraContentText"></span>
+            <br>
+            <a href="tel:+918622829020" class="contact-link" target="_blank">Call Me</a>
+            <a href="https://wa.me/8622829020" class="contact-link" target="_blank">WhatsApp Me</a>
+        </div>
+    </div>
+
+    <script>
+        function showMessage(message) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageText = document.getElementById('messageText');
+            const extraContentText = document.getElementById('extraContentText');
+            messageText.textContent = message; // Set the clicked cloud's message
+            messageContainer.style.display = "block"; // Show the message container
+
+            // Different "Read More" texts based on cloud clicked
+            if (message === 'I love you Aloo!') {
+                extraContentText.textContent =
+                    'Loving you has been the most beautiful journey of my life. Every moment with you feels like a dream, and I\'m so grateful to have you by my side.';
+            } else if (message === 'You are my sunshine!') {
+                extraContentText.textContent =
+                    'You light up my world in ways words cannot describe. Your smile brings warmth to my heart.';
+            } else if (message === 'You make me smile!') {
+                extraContentText.textContent =
+                    'Your laughter is the music that keeps me going. You make every day brighter.';
+            } else if (message === 'You are my world!') {
+                extraContentText.textContent =
+                    'You are the center of my universe, and my world revolves around you. Everything feels right with you.';
+            }
+        }
+
+        function toggleReadMore() {
+            const extraContent = document.getElementById('extraContent');
+            extraContent.style.display = extraContent.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+
+</html>
